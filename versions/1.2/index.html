@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片正片叠底混合工具</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="ico.png" type="image/png">
+</head>
+<body>
+
+    <h1>图片正片叠底混合与反转</h1>
+
+    <div class="controls">
+        <label for="imageInput" class="button">添加图片</label>
+        <input type="file" id="imageInput" accept="image/*" multiple style="display: none;">
+        <button id="downloadBtn" disabled>下载结果</button>
+
+    </div>
+
+    <div id="errorMessages" class="error-container"></div>
+
+    <div class="image-list-container">
+        <h2>已添加图片 (按混合顺序):</h2>
+        <ul id="imageList">
+            <!-- 图片预览和控制将动态添加到这里 -->
+        </ul>
+    </div>
+
+    <div class="result-container">
+        <h2>混合结果:</h2>
+        <canvas id="blendCanvas"></canvas>
+        <p id="canvasMessage">请先添加图片。</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

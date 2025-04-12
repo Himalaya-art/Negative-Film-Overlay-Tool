@@ -1,0 +1,141 @@
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    background-color: #f4f4f4;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+.controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.button, button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    font-size: 1em;
+    display: inline-block; /* For label */
+}
+
+.button:hover, button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* 新增错误信息样式 */
+.error-container {
+    text-align: center;
+    color: red;
+    margin: 10px 0;
+    min-height: 1.2em; /* 保留空间，防止布局跳动 */
+    font-weight: bold;
+}
+
+.image-list-container {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#imageList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap */
+    gap: 15px; /* Space between items */
+}
+
+#imageList li {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px; /* Remove if using gap */
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center items horizontally */
+    width: 150px; /* Fixed width for consistency */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+#imageList img {
+    max-width: 100%; /* Limit preview size */
+    height: auto;
+    max-height: 100px; /* Limit preview height */
+    margin-bottom: 10px;
+    display: block;
+}
+
+.image-controls {
+    margin-top: 5px;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.image-controls label {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.image-controls button {
+    margin-left: 10px;
+    background-color: #dc3545;
+    font-size: 0.8em;
+    padding: 3px 8px;
+}
+.image-controls button:hover {
+     background-color: #c82333;
+}
+
+
+.result-container {
+    text-align: center;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#blendCanvas {
+    border: 1px solid #ccc;
+    max-width: 100%; /* Ensure canvas is responsive */
+    height: auto;
+    background-color: #eee; /* Slight background for empty canvas */
+    display: block; /* Remove extra space below canvas */
+    margin: 0 auto; /* Center canvas */
+}
+
+#canvasMessage {
+    color: #666;
+    font-style: italic;
+}
+
+/* Optional: Style for inverted preview images */
+#imageList img.inverted-preview {
+    filter: invert(1);  /* 确保反转预览样式有效 */
+}
+/* 新增移除全部按钮样式 */
+.select-all-row button {
+    background-color: #dc3545;
+    padding: 8px 12px;
+}
+
+.select-all-row button:hover {
+    background-color: #c82333;
+}
