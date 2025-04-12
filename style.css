@@ -253,12 +253,40 @@ button:disabled {
 
 /* 页脚样式 */
 footer {
+    padding: 2rem 1rem;
+    color: #666;
+    margin-top: 3rem;
+}
+
+.footer-container {
     text-align: center;
-    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 1rem 0;
-    color: #7f8c8d;
-    font-size: 0.9rem;
-    border-top: 1px solid #ecf0f1;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #3498db;
+    object-fit: cover;
+}
+
+@media (max-width: 480px) {
+    .author-info {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
 /* 说明卡片样式 */
@@ -271,7 +299,6 @@ footer {
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     padding: 1.5rem;
-    max-width: 600px;
     margin: 0 auto;
     border-left: 4px solid #3498db;
 }
@@ -355,12 +382,32 @@ footer {
     }
     
     .button, button {
-        width: 100%;
-        margin: 5px 0;
+        width: auto;
+        min-width: 120px;
+        margin: 8px 5px;
+        padding: 12px 18px;
+        font-size: 0.95em;
     }
     
     .controls {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .select-all-row {
+        padding: 10px;
+    }
+    
+    .select-all-row button {
+        padding: 12px 18px;
+        min-width: 140px;
+    }
+    
+    .image-controls button {
+        padding: 10px 15px;
+        min-width: 100%;
+        font-size: 0.95em;
     }
 }
