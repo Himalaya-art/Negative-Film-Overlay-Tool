@@ -360,15 +360,18 @@ footer {
     }
     
     .select-all-row {
-        flex-direction: column;
-        gap: 10px;
-        align-items: stretch;
+        flex-direction: row;
+        gap: 15px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     
     .select-all-row label, .select-all-row button {
-        width: 100%;
+        width: auto;
+        min-width: 120px;
+        margin: 0;
         box-sizing: border-box;
-        text-align: center;
     }
     
     .instruction-card {
@@ -383,9 +386,9 @@ footer {
     
     .button, button {
         width: auto;
-        min-width: 120px;
+        min-width: 100px;
         margin: 8px 5px;
-        padding: 12px 18px;
+        padding: 10px 15px;
         font-size: 0.95em;
     }
     
@@ -397,12 +400,20 @@ footer {
     }
     
     .select-all-row {
+        flex-direction: row;
+        gap: 10px;
         padding: 10px;
+        justify-content: center;
+    }
+    
+    .select-all-row label, .select-all-row button {
+        width: auto;
+        min-width: 100px;
+        margin: 0;
     }
     
     .select-all-row button {
-        padding: 12px 18px;
-        min-width: 140px;
+        padding: 10px 15px;
     }
     
     .image-controls button {
