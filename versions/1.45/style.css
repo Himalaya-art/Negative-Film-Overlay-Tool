@@ -1,0 +1,457 @@
+/* 现代化图片混合工具样式 */
+body {
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+    color: #333;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin-top: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #3498db;
+    display: inline-block;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-top: 1.2rem;
+    color: #3498db;
+}
+
+/* 控制区域样式 */
+.controls {
+    text-align: center;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.button, button {
+    padding: 10px 18px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 0 8px;
+    font-size: 1em;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.button:hover, button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 错误信息样式 */
+.error-container {
+    text-align: center;
+    color: #e74c3c;
+    margin: 10px 0;
+    min-height: 1.2em;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 6px;
+    background-color: rgba(231, 76, 60, 0.1);
+    display: none; /* 默认隐藏，有错误时显示 */
+}
+
+.error-container:not(:empty) {
+    display: block;
+}
+
+/* 图片列表容器 */
+.image-list-container {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+#imageList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+#imageList li {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 170px;
+    box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+#imageList li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+#imageList img {
+    max-width: 100%;
+    height: auto;
+    max-height: 120px;
+    margin-bottom: 12px;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.image-controls {
+    margin-top: 10px;
+    font-size: 0.9em;
+    text-align: center;
+    width: 100%;
+}
+
+.image-controls label {
+    margin-right: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    color: #555;
+}
+
+.image-controls input[type="checkbox"] {
+    margin-right: 5px;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+.image-controls button {
+    margin-top: 8px;
+    background-color: #e74c3c;
+    font-size: 0.9em;
+    padding: 6px 12px;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(231, 76, 60, 0.2);
+}
+
+.image-controls button:hover {
+    background-color: #c0392b;
+}
+
+/* 结果容器 */
+.result-container {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+}
+
+#blendCanvas {
+    border: 1px solid #ddd;
+    max-width: 100%;
+    height: auto;
+    background-color: #f0f0f0;
+    display: block;
+    margin: 0 auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#canvasMessage {
+    color: #7f8c8d;
+    font-style: italic;
+    padding: 2rem;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+/* 反转预览图片样式 */
+#imageList img.inverted-preview {
+    filter: invert(1);
+}
+
+/* 全选行样式 */
+.select-all-row {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background-color: #f0f7fc;
+    border-radius: 6px;
+    border-left: 4px solid #3498db;
+}
+
+.select-all-row label {
+    display: inline-flex;
+    align-items: center;
+    background-color: #3498db;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.select-all-row label:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.select-all-row input[type="checkbox"] {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.select-all-row button {
+    background-color: #e74c3c;
+    padding: 8px 15px;
+    box-shadow: 0 2px 4px rgba(231, 76, 60, 0.2);
+}
+
+.select-all-row button:hover {
+    background-color: #c0392b;
+}
+
+/* 页脚样式 */
+footer {
+    padding: 2rem 1rem;
+    color: #666;
+    margin-top: 3rem;
+}
+
+.footer-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #3498db;
+    object-fit: cover;
+}
+
+@media (max-width: 480px) {
+    .author-info {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* 说明卡片样式 */
+.instructions {
+    margin: 1.5rem 0;
+}
+
+.instruction-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    padding: 1.5rem;
+    margin: 0 auto;
+    border-left: 4px solid #3498db;
+}
+
+.instruction-card h3 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.instruction-card ol {
+    padding-left: 1.5rem;
+    line-height: 1.8;
+}
+
+.instruction-card li {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+/* 副标题样式 */
+.subtitle {
+    text-align: center;
+    color: #7f8c8d;
+    margin-top: -0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* 图标样式 */
+.icon-add, .icon-download {
+    display: inline-block;
+    margin-right: 5px;
+    position: relative;
+    top: 1px;
+}
+
+.icon-add:before {
+    content: '+';
+    font-weight: bold;
+}
+
+.icon-download:before {
+    content: '↓';
+    font-weight: bold;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    #imageList {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 10px;
+        gap: 15px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: #bdc3c7 #f0f0f0;
+    }
+    
+    #imageList::-webkit-scrollbar {
+        height: 8px;
+    }
+    
+    #imageList::-webkit-scrollbar-track {
+        background: #f0f0f0;
+        border-radius: 4px;
+    }
+    
+    #imageList::-webkit-scrollbar-thumb {
+        background-color: #bdc3c7;
+        border-radius: 4px;
+        border: 2px solid #f0f0f0;
+    }
+    
+    #imageList li {
+        width: 160px;
+        flex-shrink: 0;
+    }
+    
+    .select-all-row {
+        flex-direction: row;
+        gap: 15px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .select-all-row label, .select-all-row button {
+        width: auto;
+        min-width: 120px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    .instruction-card {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #imageList li {
+        width: 140px;
+        padding: 10px;
+    }
+    
+    #imageList img {
+        max-height: 100px;
+    }
+    
+    .button, button {
+        width: auto;
+        min-width: 100px;
+        margin: 8px 5px;
+        padding: 10px 15px;
+        font-size: 0.95em;
+    }
+    
+    .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 15px;
+        justify-content: center;
+    }
+    
+    .select-all-row {
+        flex-direction: row;
+        gap: 10px;
+        padding: 10px;
+        justify-content: center;
+    }
+    
+    .select-all-row label, .select-all-row button {
+        width: auto;
+        min-width: 100px;
+        margin: 0;
+    }
+    
+    .select-all-row button {
+        padding: 10px 15px;
+    }
+    
+    .image-controls button {
+        padding: 10px 15px;
+        min-width: 100%;
+        font-size: 0.95em;
+    }
+}

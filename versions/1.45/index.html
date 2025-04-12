@@ -9,8 +9,6 @@
     <meta name="description" content="一个简单易用的图片正片叠底混合与反转工具">
 </head>
 <body>
-    <!-- Add Loading Indicator -->
-    <div class="loading-indicator">处理中...</div>
 
     <header>
         <h1>图片正片叠底混合与反转</h1>
@@ -19,31 +17,27 @@
 
     <div class="controls">
         <label for="imageInput" class="button"><i class="icon-add"></i>添加图片</label>
-        <input type="file" id="imageInput" accept="image/png, image/jpeg, image/gif, image/webp" multiple style="display: none;">
+        <input type="file" id="imageInput" accept="image/*" multiple style="display: none;">
         <button id="downloadBtn" disabled><i class="icon-download"></i>下载结果</button>
     </div>
 
     <div id="errorMessages" class="error-container"></div>
-    <!-- Add Performance Info placeholder -->
     <div id="performanceInfo" class="performance-info"></div>
     
     <div class="instructions">
         <div class="instruction-card">
             <h3>使用说明</h3>
             <ol>
-                <li>点击"添加图片"上传一张或多张图片 (PNG, JPG, GIF, WEBP)。</li>
-                <li>图片列表支持左右滑动查看更多图片。</li>
-                <li>勾选"反转颜色"进行底片效果处理。</li>
-                <li>图片将按添加顺序进行正片叠底混合。</li>
-                <li>使用顶部的"全选反转"或"移除全部"进行批量操作。</li>
-                <li>处理完成后可点击"下载结果"。</li>
+                <li>点击"添加图片"上传一张或多张图片</li>
+                <li>可选择反转图片颜色</li>
+                <li>图片将按添加顺序进行正片叠底混合</li>
+                <li>完成后可下载混合结果</li>
             </ol>
         </div>
     </div>
 
     <div class="image-list-container">
         <h2>已添加图片 (按混合顺序):</h2>
-        <!-- "Select All" row will be inserted here by JS if needed -->
         <ul id="imageList">
             <!-- 图片预览和控制将动态添加到这里 -->
         </ul>
